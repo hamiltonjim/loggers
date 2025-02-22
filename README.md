@@ -15,4 +15,5 @@ appear. This included groups you have defined. (See:
 3. To change the log level for a class or package, click on the select menu to
 its left, and choose the desired logging level. That package/class, and
 everything under it in hierarchy, will change to the selected level.
-4. To undo your selection, choose `~inherited~` from the select menu.
+4. To use the same level as the parent of the package/class, choose
+`~inherited~` from the select menu.

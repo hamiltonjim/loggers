@@ -90,11 +90,29 @@ function createGroupsHeader() {
   return row;
 }
 
+function getLogLevel(json) {
+  let level = json.effectiveLevel;
+  if (level === null || level === undefined) {
+    level = json.configuredLevel;
+  }
+
+  // still bad?
+  if (level === undefined) {
+    level = null;
+  }
+
+  return level;
+}
+
+function getConfiguredLevel(json) {
+  return json.configuredLevel;
+}
+
 function fillLoggers(loggers, loggerNames, table, anySelect, rootSelect) {
   table.appendChild(createLoggersHeader());
   for (let index = 0; index < loggerNames.length; ++index) {
     const aKey = loggerNames[index];
-    const level = loggers[aKey].effectiveLevel;
+    const level = getLogLevel(loggers[aKey]);
     const row = document.createElement("tr");
     row.setAttribute("class", "striped");
     const selCell = document.createElement("td");
@@ -104,7 +122,11 @@ function fillLoggers(loggers, loggerNames, table, anySelect, rootSelect) {
     } else {
       sel = anySelect.cloneNode(true);
     }
-    sel.value = level;
+    if (level === null) {
+      sel.selectedIndex = -1;
+    } else {
+      sel.value = level;
+    }
     selCell.appendChild(sel);
     row.appendChild(selCell);
 
@@ -127,7 +149,12 @@ function fillGroups(groups, groupNames, table, anySelect) {
 
     const selCell = document.createElement("td");
     const sel = anySelect.cloneNode(true);
-    sel.selectedIndex = -1;
+    const level = getLogLevel(group);
+    if (level === null) {
+      sel.selectedIndex = -1;
+    } else {
+      sel.value = level;
+    }
     selCell.appendChild(sel);
 
     row.appendChild(selCell);
@@ -185,7 +212,7 @@ function updateLogLevel(selector) {
     body: newJson
   })
     .then(result => result.text())
-    .then(data => {
+    .then(() => {
       urlField.innerText = LOGGERS_URL;
       loadLoggers();
     });
