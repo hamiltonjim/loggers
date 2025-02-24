@@ -59,9 +59,17 @@ function clearTable(table) {
   }
 }
 
-function createLoggersHeader() {
-  const row = document.createElement("tr");
+function createLoggersHeader(table) {
+  let row = document.createElement("tr");
   let hCell = document.createElement("th");
+  hCell.setAttribute("colspan", "3");
+  hCell.setAttribute("class", "center");
+  hCell.innerText = "Individual Loggers";
+  row.appendChild(hCell);
+  table.appendChild(row);
+
+  row = document.createElement("tr");
+  hCell = document.createElement("th");
   hCell.innerText = "Level";
   row.appendChild(hCell);
 
@@ -70,12 +78,20 @@ function createLoggersHeader() {
   hCell.innerText = "Class";
   row.appendChild(hCell);
 
-  return row;
+  table.appendChild(row);
 }
 
-function createGroupsHeader() {
-  const row = document.createElement("tr");
+function createGroupsHeader(table) {
+  let row = document.createElement("tr");
   let hCell = document.createElement("th");
+  hCell.setAttribute("colspan", "3");
+  hCell.setAttribute("class", "center");
+  hCell.innerText = "Logging Groups";
+  row.appendChild(hCell);
+  table.appendChild(row);
+
+  row = document.createElement("tr");
+  hCell = document.createElement("th");
   hCell.innerText = "Level";
   row.appendChild(hCell);
 
@@ -87,7 +103,7 @@ function createGroupsHeader() {
   hCell.innerText = "Members";
   row.appendChild(hCell);
 
-  return row;
+  table.appendChild(row);
 }
 
 function getLogLevel(json) {
@@ -109,7 +125,7 @@ function getConfiguredLevel(json) {
 }
 
 function fillLoggers(loggers, loggerNames, table, anySelect, rootSelect) {
-  table.appendChild(createLoggersHeader());
+  createLoggersHeader(table);
   for (let index = 0; index < loggerNames.length; ++index) {
     const aKey = loggerNames[index];
     const level = getLogLevel(loggers[aKey]);
@@ -139,7 +155,7 @@ function fillLoggers(loggers, loggerNames, table, anySelect, rootSelect) {
 }
 
 function fillGroups(groups, groupNames, table, anySelect) {
-  table.appendChild(createGroupsHeader());
+  createGroupsHeader(table);
 
   for (let index = 0; index < groupNames.length; ++index) {
     const aGroup = groupNames[index];

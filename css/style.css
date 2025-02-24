@@ -200,6 +200,10 @@ th {
   color: white;
   background-color: green;
 }
+th.center {
+  text-align: center;
+  font-size: larger;
+}
 
 th, td {
   padding: 8px;
