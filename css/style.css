@@ -214,6 +214,11 @@ tr:nth-child(even).striped {
   background-color: bisque;
 }
 
+div.display-url {
+  font-size: x-large;
+  color: royalblue;
+}
+
 /* ==========================================================================
    Print styles.
    Inlined to avoid the additional HTTP request:

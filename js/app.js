@@ -1,13 +1,27 @@
 const INHERITED = "~inherited~";
 let LOGGERS_URL;
 let urlField = null;
+let displayUrl = null;
+
+document.addEventListener("keydown", function filterKey(event) {
+  if (event.key === "Enter") {
+    const element = event.target;
+    if (element.id === "loggers-url") {
+      loadLoggers();
+    }
+  }
+});
 
 function loadLoggers() {
   if (urlField === null) {
     urlField = document.getElementById("loggers-url");
   }
+  if (displayUrl === null) {
+    displayUrl = document.getElementById("display-url");
+  }
   const url = urlField.value;
   LOGGERS_URL = url;
+  displayUrl.innerText = url;
   fetch(url)
     .then(result => result.text())
     .then(data => {
