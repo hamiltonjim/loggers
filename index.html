@@ -29,11 +29,11 @@
 
   <!-- Add your site or application content here -->
   <div class="url">
-    <label for="loggers-url">URL of "loggers" endpoint:</label>
+    <label for="loggers-url">Enter URL of "loggers" endpoint:</label>
     <input type="text" id="loggers-url" />
     <br/>
     <input type="button" value="Load" onclick="loadLoggers()">
-    <div class="display-url">
+    <div id="display-parent" class="display-url" hidden>
       Displaying Loggers for: <span id="display-url"></span>
     </div>
   </div>

@@ -187,7 +187,7 @@ textarea {
   Jim's additions.
  */
 
-input.loggers-url {
+input[type="text"] {
   width: 500px;
 }
 

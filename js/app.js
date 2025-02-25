@@ -18,6 +18,8 @@ function loadLoggers() {
   }
   if (displayUrl === null) {
     displayUrl = document.getElementById("display-url");
+    const displayParent = document.getElementById("display-parent");
+    displayParent.removeAttribute("hidden");
   }
   const url = urlField.value;
   LOGGERS_URL = url;
