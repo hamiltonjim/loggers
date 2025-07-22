@@ -1,12 +1,16 @@
 # loggers
 ## A webapp for modifying spring-boot log levels on the fly.
 
-Requirement:
+### Requirement:
 1. A spring-boot application with actuators enabled
 2. In the application properties: `management.endpoints.web.exposure.include`
 must list `loggers` among the included endpoints.
 
-Usage:
+### Installation:
+Just clone the project into a new directory, and drop that directory into a web server directory, such
+as /var/www/html or ~/public-html (depending on the host).
+
+### Usage:
 1. Enter the URL for the loggers endpoint in the appropriate text input at the
    top of the screen (for example: `http://example.com:8080/actuator/loggers`).
 2. Click "Load". A table of classes (with loggers declared) and groups will
